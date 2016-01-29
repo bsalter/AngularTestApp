@@ -1,0 +1,28 @@
+<html ng-app="testapp">
+  <head>
+    <script src="vendors.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body ng-controller="TransactionController as vm">
+    <div class="container">
+      <div class="row">
+        <label>Credit Card
+          <input type="checkbox" ng-model="vm.credit" ng-change="vm.clickedCheckbox()"/>
+        </label>
+        <br/>
+        <label>Cash
+          <input type="checkbox" ng-model="vm.cash" ng-change="vm.clickedCheckbox()"/>
+        </label>
+      </div>
+      <br/>
+      <div class="row" ng-class="{well: vm.isChecked()}">
+        <table>
+          <tr ng-repeat="row in vm.data">
+            <td>{{row | currency:"$"}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
