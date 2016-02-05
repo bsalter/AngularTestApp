@@ -5,7 +5,8 @@ var minifycss = require('gulp-minify-css');
 var Server = require('karma').Server;
 var jshint = require('gulp-jshint');
 var connect = require('gulp-connect');
-var scss = require("gulp-scss");
+var scss = require('gulp-sass');
+var clean = require('gulp-clean');
 
 gulp.task('buildVendor', function() {
    return gulp.src(['bower_components/jquery/dist/jquery.min.js',
@@ -25,20 +26,30 @@ gulp.task('buildApp', function() {
 
 gulp.task('buildCSS', function() {
 	return gulp.src(['bower_components/bootstrap/dist/css/bootstrap.css',
-			 'src/**/*.css'])
+			 'src/stylesheets/**/*.css'])
 	    .pipe(minifycss())
-      .pipe(concat('styles.css'))
-      .pipe(gulp.dest('dist'))
-      .pipe(connect.reload());
+	    .pipe(concat('cssstyles.css'))
+	    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('buildSCSS', function() {
-  return gulp.src("src/**/*.scss")
-    .pipe(scss())
-    .pipe(minifycss())
-    .pipe(concat('scssstyles.css'))
-    .pipe(gulp.dest('dist'))
-    .pipe(connect.reload());
+  return gulp.src("src/stylesheets/**/*.scss")
+      .pipe(scss({"bundleExec": true}))
+      .pipe(concat('scssstyles.css'))
+      .pipe(minifycss())
+      .pipe(gulp.dest('dist'));
+});
+
+gulp.task('mergeCSS',['buildCSS','buildSCSS'], function() {
+	return gulp.src(['dist/cssstyles.css','dist/scssstyles.css'])
+	    .pipe(concat('styles.css'))
+	    .pipe(gulp.dest('dist'))
+	    .pipe(connect.reload());
+});
+
+gulp.task('cleanCSS',['mergeCSS'], function() {
+	return gulp.src(['dist/cssstyles.css','dist/scssstyles.css'], {read: false})
+	    .pipe(clean());
 });
 
 gulp.task('moveHTML', function() {
@@ -47,7 +58,13 @@ gulp.task('moveHTML', function() {
        .pipe(connect.reload());
 });
 
-gulp.task('build', ['buildVendor','buildApp','buildCSS','buildSCSS','moveHTML']);
+gulp.task('moveImages', function() {
+	return gulp.src(['src/**/*.png','src/**/*.gif','src/**/*.jpg'])
+	    .pipe(gulp.dest('dist'))
+	    .pipe(connect.reload());
+});
+
+    gulp.task('build', ['buildVendor','buildApp','buildCSS','buildSCSS','mergeCSS','cleanCSS','moveHTML','moveImages']);
 
 // ************************************************
 

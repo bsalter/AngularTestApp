@@ -13,6 +13,14 @@
     vm.isChecked = function() {
       return vm.credit || vm.cash;
     };
+
+    vm.david = {};
+    vm.david.firstName = "David";
+    vm.david.lastName = "Crowell";
+
+    vm.helen = {};
+    vm.helen.firstName = "Helen";
+    vm.helen.lastName = "Hood";
   }
   angular.module("testapp").controller("TransactionController", ["TransactionService",transactionController]);
 
