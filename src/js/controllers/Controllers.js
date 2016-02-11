@@ -22,8 +22,13 @@
     vm.helen.firstName = "Helen";
     vm.helen.lastName = "Hood";
   }
-  angular.module("testapp").controller("TransactionController", ["TransactionService",transactionController]);
 
+  function listController() {
+    var vm = this;
+    vm.items = ["A", "List", "Of", "Items"];
+  }
+  angular.module("testapp").controller("TransactionController", ["TransactionService",transactionController]);
+  angular.module("testapp").controller("ListController",listController);
 
 
 

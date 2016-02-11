@@ -4,31 +4,11 @@
     <script src="app.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
-  <body ng-controller="TransactionController as vm">
-    <div class="container">
-      <div class="row">
-        <label>Credit Card
-          <input type="checkbox" ng-model="vm.credit" ng-change="vm.clickedCheckbox()"/>
-        </label>
-        <br/>
-        <label>Cash
-          <input type="checkbox" ng-model="vm.cash" ng-change="vm.clickedCheckbox()"/>
-        </label>
-      </div>
-      <br/>
-      <div class="row" ng-class="{well: vm.isChecked()}">
-        <table>
-          <tr ng-repeat="row in vm.data">
-            <td>{{row | currency:"$"}}</td>
-          </tr>
-        </table>
-      </div>
-
-      <cow></cow>
-      <div>
-        <span name user="vm.david"></span><br/>
-        <span name user="vm.helen"></span>
-      </div>
-    </div>
+  <body>
+    <ul class="nav nav-tabs">
+      <li ui-sref-active="active"><a ui-sref="tab1">Tab 1</a></li>
+      <li ui-sref-active="active"><a ui-sref="tab2">Tab 2</a></li>
+    </ul>
+    <div ui-view></div>
   </body>
 </html>

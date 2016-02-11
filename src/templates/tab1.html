@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <label>Credit Card
+      <input type="checkbox" ng-model="vm.credit" ng-change="vm.clickedCheckbox()"/>
+    </label>
+    <br/>
+    <label>Cash
+      <input type="checkbox" ng-model="vm.cash" ng-change="vm.clickedCheckbox()"/>
+    </label>
+  </div>
+  <br/>
+  <div class="row" ng-class="{well: vm.isChecked()}">
+    <table>
+      <tr ng-repeat="row in vm.data">
+        <td>{{row | currency:"$"}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <cow></cow>
+  <div>
+    <span name user="vm.david"></span><br/>
+    <span name user="vm.helen"></span>
+  </div>
+  <a ui-sref="tab1.list">Show List</a>
+  <div ui-view></div>
+
+</div>
