@@ -17,6 +17,7 @@
       "amount": "7.89"
     }
   ];
+
   function transactionService(dataService) {
     this.data = dataService;
     this.getTransactions = function (type) {
@@ -29,9 +30,29 @@
       return output;
     }
   }
+
+  /* default ngResource methods
+  { 'get':    {method:'GET'},
+    'save':   {method:'POST'},
+    'query':  {method:'GET', isArray:true},
+    'remove': {method:'DELETE'},
+    'delete': {method:'DELETE'} };
+    Full API documentation: https://docs.angularjs.org/api/ngResource/service/$resource
+  */
+
+  function posts($resource) {
+    var resource = $resource('http://jsonplaceholder.typicode.com/posts/:post', {},{
+      patch: {
+        method:'PATCH'
+      }
+    });
+    return resource;
+  }
+
+
   angular.module("testapp").service("TransactionService", ["DataService",transactionService]);
   angular.module("testapp").value("DataService",data);
-
+  angular.module("testapp").factory("Posts", ['$resource',posts]);
 
 
 

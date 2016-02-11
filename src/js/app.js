@@ -1,5 +1,5 @@
 (function() {
-  angular.module("testapp", ["ui.router"]);
+  angular.module("testapp", ["ui.router","ngResource"]);
 
   angular.module("testapp").config(["$stateProvider","$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
     $stateProvider

@@ -23,12 +23,15 @@
     vm.helen.lastName = "Hood";
   }
 
-  function listController() {
+  function listController(posts) {
     var vm = this;
-    vm.items = ["A", "List", "Of", "Items"];
+    vm.post = posts.get({post:1});
+    posts.patch({post:1}, {title: "Bacon is great", body: "I love bacon"}).$promise.then(function(data) {
+      console.log(data);
+    });
   }
   angular.module("testapp").controller("TransactionController", ["TransactionService",transactionController]);
-  angular.module("testapp").controller("ListController",listController);
+  angular.module("testapp").controller("ListController",["Posts",listController]);
 
 
 
