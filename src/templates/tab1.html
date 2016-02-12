@@ -22,7 +22,12 @@
     <span name user="vm.david"></span><br/>
     <span name user="vm.helen"></span>
   </div>
-  <a ui-sref="tab1.list">Show First Post</a>
+  <div ui-sref-active="hidden">
+    <a ui-sref="tab1.list">Show First Post</a>
+  </div>
+  <div ui-sref-active-eq="hidden">
+    <a ui-sref="tab1">Hide First Post</a>
+  </div>
   <div ui-view></div>
 
 </div>

@@ -13,7 +13,7 @@
         url: "/list",
         templateUrl: "templates/tab1.list.html",
         controller: "ListController",
-        controllerAs: "vm"
+        controllerAs: "list"
       })
       .state('tab2', {
         url: "/tab2",
