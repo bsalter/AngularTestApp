@@ -41,9 +41,9 @@
   */
 
   function posts($resource) {
-    var resource = $resource('http://jsonplaceholder.typicode.com/posts/:post', {},{
+    var resource = $resource("http://jsonplaceholder.typicode.com/posts/:post", {},{
       patch: {
-        method:'PATCH'
+        method:"PATCH"
       }
     });
     return resource;
@@ -52,7 +52,7 @@
 
   angular.module("testapp").service("TransactionService", ["DataService",transactionService]);
   angular.module("testapp").value("DataService",data);
-  angular.module("testapp").factory("Posts", ['$resource',posts]);
+  angular.module("testapp").factory("Posts", ["$resource",posts]);
 
 
 

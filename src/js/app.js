@@ -18,12 +18,6 @@
       .state('tab2', {
         url: "/tab2",
         templateUrl: "templates/tab2.html"
-      })
-      .state('tab2.list', {
-        url: "/list",
-        templateUrl: "templates/tab2.list.html",
-        controller: "tab2Controller",
-        controllerAs: "vm"
       });
     $urlRouterProvider.otherwise("/tab1");
   }]);
