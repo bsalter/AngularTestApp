@@ -30,9 +30,27 @@
       console.log(data);
     });
   }
+
+  function tab2Controller($scope) {
+    var tab2 = this;
+    tab2.timeoutCompleted = "No!";
+    $scope.$watch(function() {
+      console.log("digest loop ran!");
+    });
+    $scope.$watch("tab2.color.name", function(newValue, oldValue) {
+      console.log("Old value: " + oldValue);
+      console.log("New value: " + newValue);
+    });
+    setTimeout(function() {
+      //$scope.$apply(function() {
+        tab2.timeoutCompleted = "Yes!";
+      //});
+    }, 1000);
+  }
+
   angular.module("testapp").controller("TransactionController", ["TransactionService",transactionController]);
   angular.module("testapp").controller("ListController",["Posts",listController]);
-
+  angular.module("testapp").controller("Tab2Controller", ["$scope",tab2Controller]);
 
 
 

@@ -17,7 +17,9 @@
       })
       .state('tab2', {
         url: "/tab2",
-        templateUrl: "templates/tab2.html"
+        templateUrl: "templates/tab2.html",
+        controller: "Tab2Controller",
+        controllerAs: "tab2"
       });
     $urlRouterProvider.otherwise("/tab1");
   }]);
