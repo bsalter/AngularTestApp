@@ -42,9 +42,9 @@
       console.log("New value: " + newValue);
     });
     setTimeout(function() {
-      //$scope.$apply(function() {
+      $scope.$apply(function() {
         tab2.timeoutCompleted = "Yes!";
-      //});
+      });
     }, 1000);
   }
 
