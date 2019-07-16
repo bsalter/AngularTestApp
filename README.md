@@ -1,5 +1,4 @@
 # AngularScaffold
-Basic, rock-stupid Angular app.
 
 Pre-installation steps:
 ```
